@@ -18,7 +18,6 @@ end
 %% Inicialize v3
 % v3 = eye(3,1); %eigen vectors
 [vec, val]= eig( (H(:,:,3,4)\H(:,:,1,4)) * (H(:,:,1,6) \ H(:,:,2,6))  * (H(:,:,2,1)\ H(:,:,3,1)) );
-ymin=zeros(1,6)
 for i=1:3
     v3 = vec(:,i);
     v1 = (H(:,:,1,4)\H(:,:,3,4))*v3;
@@ -41,14 +40,11 @@ for i=1:3
     y(:,4)=cross(u4,(H(:,:,2,4)*v2));
     y(:,5)=cross(u5,(H(:,:,3,5)*v3));
     y(:,6)=cross(u6,(H(:,:,3,6)*v3));
-    
-    for j=1:2
-        temp= norm(y(:,j))^2
-        if (ymin(:,j)==0)
-            ymin(:,j) = temp;
-        end
-        if(ymin(:,j) >  temp)
-            ymin(:,j) =  temp
+    ymin=zeros(1,6);
+    for j=1:6
+        ymin(:,j) = norm(y(:,j))^2
+        if(ymin(:,j) < temp)
+            ymin(:,j) = temp
         end
     end
 end

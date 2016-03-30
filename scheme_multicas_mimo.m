@@ -60,6 +60,6 @@ for autovec=1:3 % for each eigenvector
 end
 
 
-
+%  anotar os valores de vx e ux para os minimos encontrados.
 
 

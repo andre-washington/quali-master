@@ -57,5 +57,4 @@ for k =1:Rx
     end
 end
 
-alternati
 
